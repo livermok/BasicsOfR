@@ -1,0 +1,7 @@
+library("ggplot2")
+sample = diamonds[sample(nrow(diamonds), 2000),]
+types <- factor(sample$cut)
+plot(sample$carat, sample$price, pch=as.integer(types), xlab = "carat", ylab ="price")
+legend("bottomright", levels(types), pch=1:length(levels(types)))
+
+model <- lm(sample$price ~ sample$carat + I(sample$carat^2))
