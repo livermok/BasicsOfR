@@ -4,7 +4,10 @@ cheapDiamonds <- subset(diamonds, diamonds$price < 1000)
 length(cheapDiamonds)
 
 #plot(cheapDiamonds$carat, cheapDiamonds$price)
-hist(cheapDiamonds$carat, breaks = 50, xlab = "price", ylab = "count")
+#hist(cheapDiamonds$carat, breaks = 50, xlab = "price", ylab = "count")
 
-#can't get this to work correctly will fix this on the future
-#cheapPlot <- ggplot(diamonds, aes(price, fill = cut)) + geom_freqpoly(alpha = 0.2)
+dataPlot <- ggplot(diamonds, aes(x = price, fill = cut)) + geom_histogram()
+print(dataPlot)
+
+#Want to work on color selection for density
+#smoothScatter(cheapDiamonds$carat, cheapDiamonds$price, nbin = 2000, colramp = colorRampPalette(c("blue", "red")))
