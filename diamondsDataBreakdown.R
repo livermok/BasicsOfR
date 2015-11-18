@@ -1,10 +1,10 @@
 library("ggplot2")
 diamondsSample <- diamonds[sample(nrow(diamonds), 2000),]
-dim(diamondsSample)
-names(diamondsSample)
-str(diamonds)
-diamonds[1:5,]
-summary(diamondsSample)
+#dim(diamondsSample)
+#names(diamondsSample)
+#str(diamonds)
+#diamonds[1:5,]
+#summary(diamondsSample)
 for (i in 1:length(diamonds))
 {
 if(is.numeric(diamondsSample[,i])){
