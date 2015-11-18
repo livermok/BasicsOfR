@@ -1,4 +1,3 @@
-#setwd("C:/Users/Galifrey/Documents/GitHub/regressionModelsInR")
 library("ggplot2")
 sample <- diamonds[sample(nrow(diamonds), 2000),]
 sample = sample[order(sample[,1]),]
