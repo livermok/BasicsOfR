@@ -1,17 +1,27 @@
 library("ggplot2")
-pdf("diamondsData.pdf")
-dim(diamonds)
-names(diamonds)
+diamondsSample <- diamonds[sample(nrow(diamonds), 2000),]
+dim(diamondsSample)
+names(diamondsSample)
 str(diamonds)
 diamonds[1:5,]
-summary(diamonds)
-hist(diamonds$price, breaks = 100)
-pie(table(diamonds$cut))
-boxplot(diamonds$price~cut, data=diamonds)
+summary(diamondsSample)
+for (i in 1:length(diamonds))
+{
+if(is.numeric(diamondsSample[,i])){
+   png(paste(colnames(diamondsSample[i]), "density.png", sep="-"))
+   plot(density(diamondsSample[,i]), main=paste("Density plot of ", colnames(diamondsSample[i])) , xlab=colnames(diamondsSample[i]))
+   graphics.off()
+}
+}
+png("pie.png")
+pie(table(diamondsSample$cut))
 graphics.off()
-pdf("diamondsDataScatter.pdf")
-with(diamonds, plot(diamonds$carat, diamonds$price, col=diamonds$cut))
+png("boxPlot.png")
+boxplot(diamondsSample$price~cut, data=diamondsSample)
 graphics.off()
-pdf("diamondsDataPairs.pdf")
-pairs(diamonds)
+png("diamondsDataScatter.png")
+with(diamondsSample, plot(diamondsSample$carat, diamondsSample$price, col=diamondsSample$cut))
+graphics.off()
+png("diamondsDataPairs.png")
+pairs(diamondsSample)
 graphics.off()
